@@ -2,13 +2,14 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "ui_form.h"
 
 class Widget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = 0);
+    Widget(QWidget *parent = nullptr);
     ~Widget();
 };
 
