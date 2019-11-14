@@ -8,12 +8,14 @@ MapForm::MapForm(QWidget *parent) :
     hlay = new QHBoxLayout();
 
     splineSeries = new QSplineSeries ;
+    scatterSeries = new QScatterSeries;
 
-    splineSeries->append(0, 6);
-    splineSeries->append(2, 4);
+    //splineSeries->append(0, 6);
+    //splineSeries->append(2, 4);
 
     chart = new QChart();//создать объект QChart
     chart->addSeries(splineSeries); //добавить данные на график
+    chart->addSeries(scatterSeries);
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
@@ -31,8 +33,10 @@ MapForm::MapForm(QWidget *parent) :
 
     chartView->chart()->setAxisX(xAxis, splineSeries);
     chartView->chart()->setAxisY(yAxis, splineSeries);
+    chartView->chart()->setAxisX(xAxis, scatterSeries);
+    chartView->chart()->setAxisY(yAxis, scatterSeries);
 
-
+    chartView->chart()->legend();
     hlay->addWidget(chartView);
     setLayout(hlay);
 }
@@ -42,8 +46,10 @@ MapForm::~MapForm() {
 }
 
 void MapForm::setXY(float X, float Y) {
-
-
+    splineSeries->append(X,Y);
+    scatterSeries->clear();
+    scatterSeries->append(X,Y);
+    //chart->scroll(X/100,Y/100);
 }
 
 void MapForm::moveRight(){
@@ -51,23 +57,25 @@ void MapForm::moveRight(){
 }
 
 void MapForm::moveLeft(){
-
+    chart->scroll(-10,0);
 }
 void MapForm::scalePlus(){
     chart->zoomIn();
+    chartView->chart()->zoom(2);
 }
 
 void MapForm::scaleMinus(){
-
+    chart->zoomOut();
 }
 void MapForm::moveUp(){
-
+    chartView->chart()->scroll(0,10);
 }
 
 void MapForm::moveDown(){
     chartView->chart()->scroll(0,-10);
 }
 void MapForm::clearChart(){
+
 
 }
 void MapForm::scaleReset(){

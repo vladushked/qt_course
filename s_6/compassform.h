@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QEvent>
+#include <QDate>
 #include "ui_compassform.h"
 #include "picframe.h"
 #include "compasswidget.h"
@@ -22,5 +23,17 @@ public:
 private:
     Ui::CompassForm *ui;
     bool closeFlag;
+    QDate *date;
+    QTime *time;
+    QTime *operatingTime;
+    QTimer *timer;
+    double prevOperatingTime;
+    int timerWidgetID;
+
+    void timerEvent(QTimerEvent *e);
+
+public slots:
+    void tick();
+
 };
 #endif // WIDGET_H

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1361</width>
-    <height>679</height>
+    <width>1377</width>
+    <height>862</height>
    </rect>
   </property>
   <property name="palette">
@@ -455,7 +455,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,3">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,3,0">
    <item>
     <widget class="PicFrame" name="picFrame">
      <property name="sizePolicy">
@@ -592,9 +592,40 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="ChartForm" name="timeChart" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>800</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>500</width>
+       <height>500</height>
+      </size>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>ChartForm</class>
+   <extends>QWidget</extends>
+   <header>chartform.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>PicFrame</class>
    <extends>QFrame</extends>

@@ -1,4 +1,4 @@
-QT       += core gui charts
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,28 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     chartform.cpp \
-    compassform.cpp \
-    compasswidget.cpp \
     main.cpp \
-    picframe.cpp
+    widget.cpp
 
 HEADERS += \
     chartform.h \
-    compassform.h \
-    compasswidget.h \
-    picframe.h
+    widget.h
 
 FORMS += \
     chartform.ui \
-    compassform.ui \
-    compasswidget.ui \
-    picframe.ui \
     widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    resourses.qrc

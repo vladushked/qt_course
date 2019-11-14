@@ -11,10 +11,11 @@ using namespace QtCharts;
 class MapForm : public QWidget, public Ui::MapForm {
     Q_OBJECT
 private:
-    QChartView * chartView;
+    QChartView *chartView;
     QHBoxLayout *hlay;
     QChart *chart;
     QSplineSeries *splineSeries;
+    QScatterSeries *scatterSeries;
 
     QValueAxis *xAxis;
     QValueAxis *yAxis;

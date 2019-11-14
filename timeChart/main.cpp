@@ -1,11 +1,11 @@
-#include "compassform.h"
+#include "widget.h"
+
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    CompassForm w;
-    w.setWindowTitle("Compass");
+    Widget w;
     w.show();
     return a.exec();
 }
