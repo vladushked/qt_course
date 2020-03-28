@@ -39,4 +39,15 @@ void Widget::readyRead()
     QByteArray ba;
     ba = pTcpSocket->readAll();
     ui->lblExchange->setText("Request to send file: " + ba);
+    QFile file(ba);
+    if (file.exists()) {
+        file.open(QFile::ReadOnly);
+        ui->lblFile->setText(ba);
+        ui->lblSize->setText(QString::number(file.size()));
+        pTcpSocket->write(file.readAll());
+        ui->lblExchange->setText("File sended");
+        file.close();
+    }
+    else
+        ui->lblExchange->setText("File doesn't exist!");
 }
