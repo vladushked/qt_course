@@ -1,4 +1,4 @@
-#ifndef SU_ROV_H
+﻿#ifndef SU_ROV_H
 #define SU_ROV_H
 
 #include <QObject>
@@ -49,6 +49,7 @@ private:
 
     void getDataFromModel();
     void yawControlChannel();
+    void pitchControlChannel();
     void BFS_DRK(double Upsi, double Uteta, double Ugamma, double Ux);
     //метод, который ограничивает значение input по величине max
     float saturation(float input, float max);

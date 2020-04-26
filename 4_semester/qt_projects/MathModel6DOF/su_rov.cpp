@@ -32,38 +32,40 @@ SU_ROV::SU_ROV(QObject *parent) : QObject(parent)
 
 void SU_ROV::tick()
 {
-    X[1][0]=K[1]; // проверка kx pult
+    X[41][0]=K[41];     // задать курс
+    X[141][0] = K[141]; // задать дифферент
     getDataFromModel();
     yawControlChannel();
-    BFS_DRK(X[49][0],0,0,0);
+    pitchControlChannel();
+    BFS_DRK(X[48][0],X[148][0],0,0);
     runge(X[27][0], X[28][0], X[29][0], X[30][0], 0.01);
 
 }
 
 void SU_ROV::getDataFromModel()
 {
-    X[32][0] = Fx;
-    X[33][0] = vx_global;
-    X[34][0] = vx_local;
-    X[35][0] = x_global;
-    X[36][0] = y_global;
-    X[37][0] = z_global;
-    X[39][0] = Tetta_g;
-    X[40][0] = Gamma_g;
-    X[42][0] = Psi_g;    // курс
-    X[50][0] = W_Psi_g;  // угловая скорость по курсу
+    X[142][0] = Tetta_g;     // дифферент
+    X[42][0] = Psi_g;       // курс
+    X[150][0] = W_Tetta_g;   // угловая скорость по дифференту
+    X[50][0] = W_Psi_g;     // угловая скорость по курсу
 }
 
 void SU_ROV::yawControlChannel()
 {
-    X[41][0] = X[1][0];
     X[43][0] = X[41][0] - X[42][0];
     X[44][0] = X[43][0] * K[44];
-
     X[45][0] = X[50][0] * K[45];
     X[46][0] = X[44][0] - X[45][0] + X[41][0] * K[43];
     X[48][0] = X[46][0];
-    X[49][0] = saturation(X[48][0], K[49]);
+}
+
+void SU_ROV::pitchControlChannel()
+{
+    X[143][0] = X[141][0] - X[142][0];
+    X[144][0] = X[143][0] * K[144];
+    X[145][0] = X[150][0] * K[145];
+    X[146][0] = X[144][0] - X[145][0] + X[141][0] * K[143];
+    X[148][0] = X[146][0];
 }
 
 void SU_ROV::BFS_DRK(double Upsi, double Uteta, double Ugamma, double  Ux)
