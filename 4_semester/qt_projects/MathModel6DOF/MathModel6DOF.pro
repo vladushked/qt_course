@@ -20,7 +20,6 @@ SOURCES += \
         KX_pult_src/qkx_coeffs.cpp \
         KX_pult_src/qpiconfig.cpp \
         main.cpp \
-        rov_model.cpp \
         su_rov.cpp
 
 # Default rules for deployment.
@@ -33,5 +32,4 @@ HEADERS += \
     KX_pult_src/kx_protocol.h \
     KX_pult_src/qkx_coeffs.h \
     KX_pult_src/qpiconfig.h \
-    rov_model.h \
     su_rov.h

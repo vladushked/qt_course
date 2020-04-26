@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include "su_rov.h"
-#include "rov_model.h"
 
 double X[2000][2];
 
