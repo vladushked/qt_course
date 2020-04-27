@@ -75,7 +75,7 @@ void SU_ROV::pitchControlChannel()
     // E(n-1)
     X[151][0] = X[143][0];
     // U(n-1)
-    X[152][0] = saturation(X[144][0], K[13]);
+    X[152][0] = saturation(X[144][0], K[13]); // это ограничение для интегратора по скорости
 }
 
 void SU_ROV::BFS_DRK(double Upsi, double Uteta, double Ugamma, double  Ux)
